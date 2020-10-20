@@ -41,14 +41,16 @@ const tcpClient = new net.Socket();
 tcpClient.connect(PORT, IP);
 
 // Event handlers.
-tcpClient.on('connect', () => {
+tcpClient.on('connect', async () => {
   console.log('Connected');
 
-  tcpClient.write(RED);
+  while (true) {
+    tcpClient.write(RED);
+    await sleep(DELAY);
 
-  setTimeout(() => {
     tcpClient.write(GREEN);
-  }, DELAY)
+    await sleep(DELAY);
+  }
 })
 
 tcpClient.on('error', (error) => {
@@ -58,3 +60,11 @@ tcpClient.on('error', (error) => {
 tcpClient.on('close', () => {
   console.log('Disconnected');
 })
+
+/// Helper functions ---------------------------------------
+
+async function sleep(interval) {
+  return new Promise(resolve => {
+    setTimeout(() => { resolve() }, interval)
+  })
+}
