@@ -12,8 +12,8 @@ let IP = '127.0.0.1';
 
 //* Allow overriding of IP and PORT settings, respectively.
 //
-//? `node . 127.0.0.1` will override the IP; and
-//? `node . 127.0.0.1 80` will override the IP and PORT
+//? `node client 127.0.0.1` will override the IP; and
+//? `node client 127.0.0.1 80` will override the IP and PORT
 //? settings.
 //
 //! This fill not work whenever this file is compiled.
